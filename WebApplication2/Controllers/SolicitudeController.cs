@@ -52,12 +52,16 @@ namespace WebApplication2.Controllers
             return View("Success");
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
             ApiConnect api = new ApiConnect();
             string url = "http://localhost:8080";
-            var responseSolicitudes = api.GetApi(url + "/solicitude/");
-            return View();
+            var responseSolicitudes = api.DeleteFromApi(url + "/solicitude/" + id);
+            if(responseSolicitudes.IsSuccessStatusCode)
+            {
+                return View("Success");
+            }
+            return View("Error");
         }
 
 

@@ -22,7 +22,7 @@ namespace WebApplication2.Helpers
             return result;
         }
 
-        public HttpResponseMessage DeleteFromApi(string url, string json = null)
+        public HttpResponseMessage DeleteFromApi(string url)
         {
             var client = new HttpClient();
             var result = client.DeleteAsync(url).Result;
