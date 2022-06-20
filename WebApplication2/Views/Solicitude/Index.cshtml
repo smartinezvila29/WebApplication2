@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebApplication2.Models.SolicitudeDto>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Lista solicitudes</h1>
+
+<p>
+    <a asp-action="Create">Crear nueva solicitud</a>
+</p>
+<table class="table">
+    <thead>
+        @foreach(SolicitudeDto item in ViewBag.lstSolicitudes)
+        {
+         <tr>
+            <th>@item.solicitudeDate</th>
+            <th>@item.typeSolicitude</th>
+            <th>@item.shiftEntity</th>
+            <th>@Html.ActionLink("Eliminar", "Delete", new { @item.id })
+                </th>
+        </tr>   
+        }
+    </thead>
+    <tbody>
+@*@foreach (var item in ViewBag.lstSolicitudes) {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}*@
+    </tbody>
+</table>
