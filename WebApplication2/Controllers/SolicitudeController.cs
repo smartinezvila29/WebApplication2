@@ -9,10 +9,10 @@ namespace WebApplication2.Controllers
 {
     public class SolicitudeController : Controller
     {
+        public string url = "http://localhost:8080";
         public IActionResult Index()
         {
             ApiConnect api = new ApiConnect();
-            string url = "http://localhost:8080";
             var responseSolicitudes = api.GetApi(url + "/solicitude/");
             List<SolicitudeDto> lstSolicitudesParsed = CastGetSolicitudes(responseSolicitudes);
             ViewBag.lstSolicitudes = lstSolicitudesParsed;
@@ -23,7 +23,6 @@ namespace WebApplication2.Controllers
         public ActionResult Create()
         {
             ApiConnect api = new ApiConnect();
-            string url = "http://localhost:8080";
             var responseClassroom = api.GetApi(url + "/classroom/");
             List<ClassroomDto> lstClass = CastListClassrooms(responseClassroom);
             var responseSubjects = api.GetApi(url + "/subject/");
@@ -46,7 +45,6 @@ namespace WebApplication2.Controllers
             json = json.Replace("subjectDto", "subjectEntity");
             json = json.Replace("classroomDto", "classroomEntity");
             ApiConnect api = new ApiConnect();
-            string url = "http://localhost:8080";
             api.PostApi(url + "/solicitude/", json);
 
             return View("Success");
@@ -55,7 +53,6 @@ namespace WebApplication2.Controllers
         public IActionResult Delete(int id)
         {
             ApiConnect api = new ApiConnect();
-            string url = "http://localhost:8080";
             var responseSolicitudes = api.DeleteFromApi(url + "/solicitude/" + id);
             if(responseSolicitudes.IsSuccessStatusCode)
             {
