@@ -28,5 +28,13 @@ namespace WebApplication2.Helpers
             var result = client.DeleteAsync(url).Result;
             return result;
         }
+
+        public HttpResponseMessage UpdateFromApi(string url, string json)
+        {
+            var client = new HttpClient();
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var result = client.PutAsync(url, content).Result;
+            return result;
+        }
     }
 }

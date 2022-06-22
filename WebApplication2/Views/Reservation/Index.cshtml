@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebApplication2.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista espacios ocupados</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Turno
+            </th>
+            <th>
+                Edificio
+            </th>
+            <th>
+                Aula numero
+            </th>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Ocupado
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Reservation item in ViewBag.Reservations) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.reservationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shiftEntity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.classroomEntity.buildingEntity.buildingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.classroomEntity.number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.classroomEntity.typeClassroom)
+            </td>
+            <td>
+                @if(item.taken)
+                {
+                        <p>Si</p>
+                }else
+                {
+                        <p>No</p>
+                }
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

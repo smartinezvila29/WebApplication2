@@ -10,6 +10,7 @@ namespace WebApplication2.Models
         public int quantityOfPC { get; set; }
         public string typeClassroom { get; set; }
         public bool blackboard { get; set; }
+        public BuildingEntity buildingEntity { get; set; }
     }
 
 
