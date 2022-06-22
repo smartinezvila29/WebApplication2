@@ -10,9 +10,9 @@ namespace WebApplication2.Controllers
     public class SolicitudeController : Controller
     {
         public string url = "http://localhost:8080";
+        ApiConnect api = new ApiConnect();
         public IActionResult Index()
         {
-            ApiConnect api = new ApiConnect();
             var responseSolicitudes = api.GetApi(url + "/solicitude/");
             List<SolicitudeDto> lstSolicitudesParsed = CastGetSolicitudes(responseSolicitudes);
             ViewBag.lstSolicitudes = lstSolicitudesParsed;

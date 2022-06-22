@@ -38,7 +38,7 @@ namespace WebApplication2.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var response = api.GetApi(url + "/person/roles/");
+            var response = api.GetApi(url + "/role/");
             var contents = response.Content.ReadAsStringAsync().Result;
             List<Role> lstRolesParsed = CastRoles(contents);
             ViewBag.lstRoles = lstRolesParsed;
